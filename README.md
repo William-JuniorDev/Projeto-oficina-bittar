@@ -28,4 +28,4 @@ Como o projeto foi desenvolvido em arquitetura estática pura, não é necessár
 
 Você pode visualizar a landing page rodando ao vivo pelo link abaixo:
 
-Axesse meu projeto: 
+Axesse meu projeto:https://william-juniordev.github.io/Projeto-oficina-bittar/
