@@ -23,18 +23,23 @@
     </button>
     <nav>
       <ul class="nav-menu">
-  <li><a href="#servicos" class="nav-link">Serviços</a></li>
-  <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
-  <li><a href="#trabalhos" class="nav-link">Trabalhos</a></li>
-  <li><a href="#faq" class="nav-link">Dúvidas</a></li>
-  <li><a href="#localizacao" class="nav-link">Localização</a></li>
-</ul>
+        <li><a href="#inicio" class="nav-link">Início</a></li>
+        <li><a href="#servicos" class="nav-link">Serviços</a></li>
+        <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
+        <li><a href="#trabalhos" class="nav-link">Trabalhos</a></li>
+        <li><a href="#atendimento" class="nav-link">Área do Cliente</a></li>
+        <li><a href="#faq" class="nav-link">Dúvidas</a></li>
+        <li><a href="#localizacao" class="nav-link">Localização</a></li>
+        <li class="menu-btn-item">
+          <a href="#orcamento" class="btn-menu-orcamento">Faça seu Orçamento Aqui</a>
+        </li>
+      </ul>
     </nav>
   </header>
 
   <main>
     <!-- Seção Principal -->
-    <section class="hero">
+    <section id="inicio" class="hero">
   <div class="hero-badge">
     <i class="fa-solid fa-shield-halved"></i> Oficina Especializada em Quissamã
   </div>
@@ -133,7 +138,7 @@
         <div class="info-block">
           <div class="card-icon"><i class="fa-solid fa-location-dot"></i></div>
           <h3>Nosso Endereço</h3>
-          <p>Rua doze de Setembro N579 - bairro caxias, Quissamã - RJ.</p>
+          <p>Rua doze de Setembro N 579 - bairro caxias, Quissamã - RJ.</p>
         </div>
       </div>
 
@@ -176,6 +181,120 @@
   </div>
 </section>
           
+         <!-- SEÇÃO  FAÇA O SEU ORÇAMENTO -->
+<section id="orcamento" class="reveal" style="padding: 60px 20px; background-color: #0d0d0d;">
+  <div style="max-width: 550px; margin: 0 auto; background: #181818; padding: 30px; border-radius: 12px; border-top: 4px solid #e6b800; box-shadow: 0 8px 24px rgba(0,0,0,0.6);">
+    
+    <h2 style="text-align: center; color: #e6b800; margin-bottom: 8px; font-size: 1.8rem;">Faça seu Orçamento</h2>
+    <p style="text-align: center; color: #aaa; margin-bottom: 25px; font-size: 0.95rem;">Preencha os dados abaixo para registrar seu pedido diretamente em nosso sistema:</p>
+
+    <form id="form-orcamento" style="display: flex; flex-direction: column; gap: 18px;">
+      <div>
+        <label for="nome" style="display: block; margin-bottom: 6px; color: #eee; font-size: 0.9rem;">Nome Completo:</label>
+        <input type="text" id="nome" name="nome" placeholder="Ex: Carlos Silva" required style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #333; background: #222; color: #fff; box-sizing: border-box; outline: none;">
+      </div>
+
+      <div>
+        <label for="telefone" style="display: block; margin-bottom: 6px; color: #eee; font-size: 0.9rem;">Telefone / WhatsApp:</label>
+        <input type="tel" id="telefone" name="telefone" placeholder="(22) 99999-9999" required style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #333; background: #222; color: #fff; box-sizing: border-box; outline: none;">
+      </div>
+
+      <div>
+        <label for="servico" style="display: block; margin-bottom: 6px; color: #eee; font-size: 0.9rem;">Serviço Desejado:</label>
+        <input type="text" id="servico" name="servico" placeholder="Ex: Revisão de freios, Troca de óleo..." required style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #333; background: #222; color: #fff; box-sizing: border-box; outline: none;">
+      
+          <label for="mensagem" style="display: block; margin-bottom: 6px; color: #eee; font-size: 0.9rem;">Diga-nos o que aconteceu ou qual o problema:</label>
+
+        <textarea id="mensagem" name="mensagem" placeholder="Ex: O carro está fazendo um barulho ao frear..." style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #333; background: #222; color: #fff; box-sizing: border-box; outline: none; min-height: 90px; resize: vertical; font-family: inherit;"></textarea>
+
+          </div>
+
+        <div>
+          <label for="placa" style="display: block; margin-bottom: 6px; color: #eee; font-size: 0.9rem;">Placa do Veículo (Opcional):</label>
+          <input type="text" id="placa" name="placa" placeholder="Ex: ABC-1D23" maxlength="8" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #333; background: #222; color: #fff; box-sizing: border-box; outline: none;">
+        </div>
+
+      <button type="submit" style="padding: 14px; background-color: #e6b800; color: #111; font-weight: bold; font-size: 1rem; border: none; border-radius: 6px; cursor: pointer; margin-top: 10px; transition: 0.2s;">
+        Enviar Orçamento
+      </button>
+    </form>
+
+  </div>
+</section>
+
+    <!-- SEÇÃO DE CONSULTAS (ORÇAMENTO + STATUS DO VEÍCULO) -->
+<section id="atendimento" class="container reveal">
+
+    <!-- TÍTULO PRINCIPAL DA SEÇÃO -->
+  <div style="text-align: center; margin-bottom: 35px;">
+    <h2 style="font-size: 2rem; color: #ffffff; margin-bottom: 8px;">Área do Cliente</h2>
+    <p style="color: #a0a0a0; font-size: 0.95rem;">Consulte o valor do seu orçamento ou veja o andamento do seu veículo na oficina</p>
+  </div>
+
+  <div class="grid-atendimento">
+    
+    <!-- CARTÃO 1: CONSULTE SEU ORÇAMENTO -->
+    <div class="card-atendimento">
+      <h2>Consulte seu Orçamento</h2>
+      <p class="subtitulo-card">Digite seu nome e telefone para verificar a resposta da sua solicitação:</p>
+      
+      <form id="form-consulta-valor" onsubmit="event.preventDefault(); buscarValorOrcamento();">
+        <div class="form-group">
+          <label for="orcamento-nome">Seu Nome Completo:</label>
+          <input type="text" id="orcamento-nome" placeholder="Ex: Carlos Silva" required>
+        </div>
+
+        <div class="form-group">
+          <label for="orcamento-tel">Telefone / WhatsApp:</label>
+          <input type="tel" id="orcamento-tel" placeholder="(22) 99999-9999" required>
+        </div>
+
+        <button type="submit" class="btn-primary">Consultar Orçamento</button>
+      </form>
+
+      <!-- RESPOSTA DO ORÇAMENTO (APARECE AQUI ABAIXO) -->
+      <div id="resultado-valor-orcamento" class="resultado-os-card" style="display: none;">
+        <h3>💵 Valor Estimado</h3>
+        <p style="margin-top: 8px;"><strong>Valor:</strong> <span id="val-orcamento" style="color: #4ade80; font-weight: bold; font-size: 1.1rem;">-</span></p>
+        <p style="margin-top: 6px;"><strong>Observações:</strong> <span id="val-obs">-</span></p>
+      </div>
+    </div>
+
+    <!-- CARTÃO 2: ACOMPANHE SEU VEÍCULO -->
+    <div class="card-atendimento">
+      <h2>Acompanhe seu Veículo</h2>
+      <p class="subtitulo-card">Já é nosso cliente? Digite seus dados para ver o andamento em tempo real:</p>
+      
+      <form id="form-consulta-os" onsubmit="event.preventDefault(); buscarStatusOS();">
+        <div class="form-group">
+          <label for="os-nome">Seu Nome Completo:</label>
+          <input type="text" id="os-nome" placeholder="Ex: Carlos Silva" required>
+        </div>
+
+        <div class="form-group">
+          <label for="os-input">Telefone / WhatsApp do Cadastro:</label>
+          <input type="tel" id="os-input" placeholder="(22) 99999-9999" required>
+        </div>
+
+        <button type="submit" class="btn-primary">Consultar Status</button>
+      </form>
+
+      <!-- RESPOSTA DO STATUS DO VEÍCULO (APARECE AQUI ABAIXO) -->
+      <div id="os-resultado" class="resultado-os-card" style="display: none;">
+        <h3 id="os-veiculo">🚘 Veículo</h3>
+        <p style="margin-top: 5px;"><strong>Status:</strong> <span id="os-status-tag" class="badge-status">-</span></p>
+        
+        <div class="detalhes-os" style="margin-top: 12px;">
+          <p><strong>✅ Concluído:</strong> <span id="os-concluido">-</span></p>
+          <p><strong>⏳ Pendente:</strong> <span id="os-pendente">-</span></p>
+          <p><strong>📅 Previsão:</strong> <span id="os-previsao">-</span></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
     <!-- Seção de Dúvidas (FAQ) -->
     <section id="faq" class="reveal">
       <h2 class="section-title">Perguntas Frequentes</h2>
@@ -199,6 +318,7 @@
       </div>
     </section>
 
+      </main>
   <!-- Rodapé -->
   <footer class="footer">
     <p>&copy; 2026 Oficina Mecânica Bittar. Todos os direitos reservados.</p>
@@ -219,6 +339,11 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
-    <script src="script.js" defer></script>
+  <!-- SDK oficial do Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Seu script principal -->
+    <script src="script.js"></script>
+
 </body>
 </html>

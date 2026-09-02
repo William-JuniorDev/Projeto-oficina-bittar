@@ -20,11 +20,10 @@
   --shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
 }
 
-/* 2. Reset Universal */
 *, *::before, *::after {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -65,18 +64,20 @@ section {
 
 /* 3. Cabeçalho (Header) */
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
-  background-color: rgba(18, 18, 18, 0.95);
-  backdrop-filter: blur(10px);
+  left: 0;
+  right: 0;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  border-bottom: 4px solid var(--brand-yellow);
+  padding: 15px 20px;
+  background-color: #0d0d0d;
+  z-index: 1000;
+  box-sizing: border-box;
 }
+
 
 .nav-menu {
   display: flex;
@@ -393,17 +394,16 @@ section {
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0 !important;
+  transform: translateY(80px) !important; /* Aumentado para 80px */
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
-/* Estado quando o elemento entra na tela */
 .reveal.active {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 /* 2. Micro-interações nos Cartões e Ícones */
@@ -647,4 +647,449 @@ p.hero-subtitle {
   .gallery-grid {
     gap: 0.8rem !important;
   }
+}
+
+/* Exibição do Menu Mobile ao Clicar */
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #0d0d0d;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .nav-menu.active {
+    display: flex !important;
+  }
+}
+
+/* Correção do Header Mobile e Exibição do Menu */
+.header {
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Exibição do Menu Mobile ao Clicar */
+@media (max-width: 768px) {
+  .nav-menu.active,
+  .nav-list.active,
+  nav ul.active {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #0d0d0d;
+    padding: 20px;
+    z-index: 999;
+  }
+}
+
+/* 1. Evita que o cabeçalho fixo tampe o início da página */
+main, 
+section:first-of-type,
+.hero {
+  padding-top: 100px !important;
+}
+
+/* 2. Destrava a rolagem vertical e remove bloqueios de clique */
+html, body {
+  height: auto !important;
+  min-height: 100% !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+/* Libera todos os elementos para clique */
+a, button, .btn, .whatsapp-float, input, select, textarea {
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 5;
+}
+
+/* Correção do Menu Mobile invisível não bloquear cliques */
+@media (max-width: 768px) {
+  main, 
+  section:first-of-type,
+  .hero {
+    padding-top: 110px !important;
+  }
+
+  .nav-menu,
+  .nav-list,
+  nav ul {
+    display: none;
+  }
+
+  .nav-menu.active,
+  .nav-list.active,
+  nav ul.active {
+    display: flex !important;
+    flex-direction: column !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    width: 100% !important;
+    background-color: #0d0d0d !important;
+    padding: 20px !important;
+    z-index: 9999 !important;
+  }
+}
+
+/* =========================================================
+   1. FUNDO PREMIUM - SEÇÃO DE ORÇAMENTO
+   ========================================================= */
+#orcamento, 
+.orcamento-section {
+  position: relative;
+  background: radial-gradient(circle at 50% 30%, rgba(250, 204, 21, 0.08) 0%, transparent 60%),
+              linear-gradient(180deg, #0b0f17 0%, #111827 50%, #0b0f17 100%) !important;
+  padding: 60px 20px;
+  overflow: hidden;
+}
+
+/* Moldura e contraste do Card de Orçamento */
+#orcamento .form-container,
+#orcamento .card-orcamento,
+.form-orcamento-wrapper {
+  background: rgba(18, 24, 38, 0.85) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(250, 204, 21, 0.3) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 
+              0 0 30px rgba(250, 204, 21, 0.08) !important;
+  border-radius: 16px !important;
+}
+
+/* =========================================================
+   2. ELEVAÇÃO INTERATIVA (HOVER NOS ELEMENTOS CLICÁVEIS)
+   ========================================================= */
+/* Aplica transição suave em cards, botões e links interativos */
+.card, 
+.servico-card, 
+.btn, 
+button[type="submit"], 
+.whatsapp-float,
+a.btn-primary {
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  will-change: transform;
+}
+
+/* Efeito de elevação ao passar o mouse ou focar */
+.card:hover, 
+.servico-card:hover, 
+.btn:hover, 
+button[type="submit"]:hover,
+a.btn-primary:hover {
+  transform: translateY(-6px) scale(1.01) !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), 
+              0 0 15px rgba(250, 204, 21, 0.2) !important;
+}
+
+/* Efeito ao pressionar (clique/toque no celular) */
+.card:active, 
+.servico-card:active, 
+.btn:active, 
+button[type="submit"]:active {
+  transform: translateY(-2px) !important;
+}
+
+/* Botão do WhatsApp Flutuante Fixo (Apenas o ícone do canto) */
+a.whatsapp-float {
+  position: fixed !important;
+  bottom: 25px !important;
+  right: 25px !important;
+  width: 60px !important;
+  height: 60px !important;
+  background-color: #25d366 !important;
+  color: #fff !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+  z-index: 99999 !important;
+  text-decoration: none !important;
+  pointer-events: auto !important;
+}
+
+a.whatsapp-float:hover {
+  transform: scale(1.1) !important;
+  background-color: #1da851 !important;
+}
+
+/* Destaque do Botão de Orçamento no Menu Mobile */
+.btn-menu-orcamento {
+  display: inline-block;
+  background-color: #facc15 !important; /* Amarelo da marca */
+  color: #0d0d0d !important;
+  font-weight: 700 !important;
+  padding: 10px 18px !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  text-align: center;
+  margin-top: 8px;
+  transition: transform 0.2s ease, background-color 0.2s ease !important;
+}
+
+.btn-menu-orcamento:active,
+.btn-menu-orcamento:hover {
+  background-color: #eab308 !important;
+  transform: scale(1.03) !important;
+}
+
+/* Organização da Seção de Atendimento */
+.grid-atendimento {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Lado a lado no computador */
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.card-atendimento {
+  background-color: #1a1a1a;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+}
+
+/* Responsividade para Celular */
+@media (max-width: 768px) {
+  .grid-atendimento {
+    grid-template-columns: 1fr; /* Empilha no celular para não espremê-los */
+  }
+}
+
+/* Layout Lado a Lado dos Formulários */
+.grid-atendimento {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Estilo do resultado da consulta para harmonizar com o seu tema dark */
+.resultado-os-card {
+  margin-top: 20px;
+  padding: 16px;
+  background-color: #1a1a1a;
+  border-left: 4px solid #facc15;
+  border-radius: 6px;
+}
+
+.resultado-os-card h3 {
+  color: #facc15;
+  font-size: 1.1rem;
+}
+
+.badge-status {
+  background-color: #facc15;
+  color: #000;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+/* CORREÇÃO FORÇADA DE ESTILO DOS FORMULÁRIOS */
+
+/* Ajusta as caixas para preencherem 100% da largura com fundo escuro */
+.card-atendimento input,
+.card-atendimento select,
+.card-atendimento textarea,
+.card-orcamento-original input,
+.card-orcamento-original select,
+.card-orcamento-original textarea,
+#form-orcamento input,
+#form-orcamento select,
+#form-orcamento textarea,
+#form-consulta input {
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+  border: 1px solid #333333 !important;
+  border-radius: 6px !important;
+  padding: 12px 14px !important;
+  font-size: 0.95rem !important;
+  margin-bottom: 15px !important;
+  outline: none !important;
+}
+
+/* Foco amarelo nos campos */
+.card-atendimento input:focus,
+.card-atendimento select:focus,
+.card-atendimento textarea:focus,
+#form-orcamento input:focus,
+#form-orcamento select:focus,
+#form-orcamento textarea:focus,
+#form-consulta input:focus {
+  border-color: #facc15 !important;
+}
+
+/* Ajuste dos Botões de Envio e Consulta */
+.card-atendimento button,
+.card-orcamento-original button,
+#form-orcamento button,
+#form-consulta button {
+  width: 100% !important;
+  background-color: #facc15 !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+  border: none !important;
+  padding: 12px !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  font-size: 1rem !important;
+  transition: background-color 0.2s !important;
+}
+
+.card-atendimento button:hover,
+#form-orcamento button:hover,
+#form-consulta button:hover {
+  background-color: #eab308 !important;
+}
+
+/* Textarea específico */
+textarea {
+  min-height: 90px !important;
+  resize: vertical !important;
+}
+
+/* 1. CORREÇÃO DO CARD "ACOMPANHE SEU VEÍCULO" (FUNDO E BORDA) */
+.card-atendimento,
+.card-orcamento-original {
+  background-color: #121212 !important;
+  border: 1px solid #222222 !important;
+  border-radius: 12px !important;
+  padding: 30px 25px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* 2. CORREÇÃO DOS TEXTOS/LETRAS INVISÍVEIS (LABELS E PLACEHOLDERS) */
+.card-atendimento label,
+.card-orcamento-original label,
+#form-orcamento label,
+#form-consulta label {
+  color: #e0e0e0 !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  margin-bottom: 6px !important;
+  display: block !important;
+}
+
+/* Cor das letras de instrução (Placeholder) */
+input::placeholder,
+textarea::placeholder,
+select option {
+  color: #a0a0a0 !important;
+  opacity: 1 !important;
+}
+
+/* Garante texto digitado e opção selecionada bem claros (Branco puro) */
+input,
+select,
+textarea {
+  color: #ffffff !important;
+}
+
+/* Estilo para as opções dentro do campo Select/Dropdown */
+select option {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+}
+
+/* CORREÇÃO DAS FRASES EXPLICATIVAS / SUBTÍTULOS INVISÍVEIS */
+.card-atendimento p,
+.card-orcamento-original p,
+.subtitulo-card,
+#orcamento p {
+  color: #a0a0a0 !important; /* Cinza claro com ótimo contraste */
+  font-size: 0.9rem !important;
+  line-height: 1.4 !important;
+  margin-top: 4px !important;
+  margin-bottom: 20px !important;
+  display: block !important;
+}
+
+/* Garante que os títulos dos cards fiquem em branco puro */
+.card-atendimento h2,
+.card-orcamento-original h2,
+#orcamento h2 {
+  color: #ffffff !important;
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 6px !important;
+}
+
+/* Ajuste global para rolagem de links do menu */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Evita que o cabeçalho fixo cubra qualquer parte do conteúdo */
+}
+
+/* 1. Ajuste de rolagem e prevenção de corte de formulário */
+#orcamento {
+  scroll-margin-top: 70px !important; /* Compensa o cabeçalho fixo no celular */
+}
+
+/* 2. Compactação elegante do formulário em telas pequenas para caber tudo */
+@media (max-width: 768px) {
+  #orcamento {
+    padding: 30px 15px !important;
+  }
+
+  #orcamento form {
+    gap: 12px !important;
+  }
+
+  #orcamento .form-group, 
+  #orcamento form > div {
+    margin-bottom: 0 !important;
+  }
+
+  #orcamento input, 
+  #orcamento textarea, 
+  #orcamento button {
+    padding: 10px 12px !important;
+  }
+
+  #orcamento textarea {
+    min-height: 70px !important;
+  }
+}
+
+/* REGRA UNIVERSAL DE ROLAGEM E ENCAIXE */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Garante espaço para o cabeçalho fixo */
+}
+
+/* Força cada seção a ter margem de rolagem limpa e previne overflow */
+section, 
+.container {
+  scroll-margin-top: 80px;
+  box-sizing: border-box;
+}
+
+/* Previne que elementos na borda entrem em loop de animação */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px); /* Empurra o elemento 60px para baixo até ativar */
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
